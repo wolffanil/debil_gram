@@ -38,6 +38,8 @@ const Nav = styled.nav`
     column-gap: 33px;
     color: var(--violet-color);
     font-size: 50px;
+    font-family: "redoctober";
+    font-weight: 400;
   }
 `;
 

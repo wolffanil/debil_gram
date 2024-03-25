@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 type NavChatsProps = {
@@ -15,7 +16,9 @@ function NavChats({ setSettings }: NavChatsProps) {
             <p className="nav__subname">Ник</p>
           </div>
           <button className="nav__chat">
-            <img src="/nav/chats.svg" alt="newChat" />
+            <NavLink to={`/chats/${23}`}>
+              <img src="/nav/chats.svg" alt="newChat" />
+            </NavLink>
           </button>
         </li>
 
@@ -26,7 +29,9 @@ function NavChats({ setSettings }: NavChatsProps) {
             <p className="nav__subname">Ник</p>
           </div>
           <button className="nav__chat">
-            <img src="/nav/chats.svg" alt="newChat" />
+            <NavLink to={`/chats/${23}`}>
+              <img src="/nav/chats.svg" alt="newChat" />
+            </NavLink>
           </button>
         </li>
 
@@ -37,7 +42,9 @@ function NavChats({ setSettings }: NavChatsProps) {
             <p className="nav__subname">Ник</p>
           </div>
           <button className="nav__chat">
-            <img src="/nav/chats.svg" alt="newChat" />
+            <NavLink to={`/chats/${23}`}>
+              <img src="/nav/chats.svg" alt="newChat" />
+            </NavLink>
           </button>
         </li>
       </Wrapper>
@@ -97,6 +104,8 @@ const Button = styled.button`
   align-items: center;
   background-color: var(--grey-color);
   font-size: 30px;
+  border: none;
+  outline: none;
 `;
 
 export default NavChats;

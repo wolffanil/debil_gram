@@ -42,6 +42,13 @@ export const Form = styled.form`
     align-items: start;
   }
 
+  .form__error {
+    margin-top: 5px;
+    color: red;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
   .form__input {
     border: 1px solid var(--violet-color);
     background-color: var(--grey-color);

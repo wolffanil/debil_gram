@@ -20,7 +20,9 @@ const Layout = styled.div`
   display: flex;
 
   .layout__section {
-    min-width: 1320px;
+    width: 100%;
+    padding: 65px 0px 0px 183px;
+    background-color: var(--backgraund-color);
   }
 `;
 

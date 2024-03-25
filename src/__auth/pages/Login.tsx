@@ -1,13 +1,28 @@
 import { useForm } from "react-hook-form";
+import * as z from "zod";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { Form } from "../../components/ui/FormStyles";
+import { SigninValidation } from "../../libs/validation";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 function Login() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<z.infer<typeof SigninValidation>>({
+    resolver: zodResolver(SigninValidation),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
-  const onLogin = () => {};
+  const onLogin = (value: z.infer<typeof SigninValidation>) => {
+    console.log(value);
+  };
 
   return (
     <Form onSubmit={handleSubmit(onLogin)}>
@@ -22,8 +37,11 @@ function Login() {
       </p>
 
       <div className="form__wrapper">
-        <label className="form__label">Имя</label>
-        <input type="text" {...register("name")} className="form__input" />
+        <label className="form__label">Email</label>
+        <input type="text" {...register("email")} className="form__input" />
+        {errors.email && errors.email.message && (
+          <p className="form__error">{errors.email.message}</p>
+        )}
       </div>
 
       <div className="form__wrapper">
@@ -33,6 +51,10 @@ function Login() {
           {...register("password")}
           className="form__input"
         />
+
+        {errors.password && errors.password.message && (
+          <p className="form__error">{errors.password.message}</p>
+        )}
       </div>
 
       <button className="form__button" type="submit">

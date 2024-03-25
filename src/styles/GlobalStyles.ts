@@ -28,6 +28,15 @@ const GlobalStyles = createGlobalStyle`
   transition: background-color 0.3s, border 0.3s;
 }
 
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Inter";
+  position: relative;
+}
 
 
 body {
@@ -38,17 +47,27 @@ body {
   /* min-height: 100vh; */
 }
 
+html {
+  background-color: var(--backgraund-color);
+}
+
 input,
 button,
 textarea,
 select {
   font: inherit;
   color: inherit;
+
+}
+
+input {
+  border: none;
 }
 
 button {
   cursor: pointer;
   border: none;
+  outline: none;
 }
 
 *:disabled {
@@ -62,7 +81,6 @@ input:disabled {
 }
 
 input:focus,
-button:focus,
 textarea:focus,
 select:focus {
   outline: 2px solid var(--violet-color);
@@ -89,6 +107,22 @@ h5,
 h6 {
   overflow-wrap: break-word;
   hyphens: auto;
+}
+
+@font-face {
+  font-family: 'redoctober';
+  src: url('/fonts/redoctober.ttf') format('truetype');
+
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url('/fonts/Montserrat-ExtraLight.ttf') format('truetype');
+
+  font-weight: 400;
+  font-style: normal;
 }
 
 `;

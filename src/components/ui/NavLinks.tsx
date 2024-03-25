@@ -13,7 +13,7 @@ function NavLinks({ setSettings }: NavLinksProps) {
   return (
     <WrapperSettings>
       {navLinks.map((links) => (
-        <li className="nav__item_settings">
+        <li className="nav__item_settings" key={links.title}>
           <NavLink to={links.link} className="nav__item_settings">
             <img
               src={links.img}
@@ -50,10 +50,17 @@ const WrapperSettings = styled.ul`
 
   .nav__item_settings {
     display: flex;
-    width: 286px;
+    min-width: 286px;
     column-gap: 33px;
     align-items: center;
     cursor: pointer;
+  }
+
+  .active {
+    background-color: var(--backgraund-color);
+    border-radius: 20px;
+    padding: 15px 15px;
+    border-left: 10px solid var(--violet-color);
   }
 
   .nav__img_settings {

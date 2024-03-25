@@ -2,7 +2,14 @@ import { ReactNode, createContext, useContext, useEffect } from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 /* eslint-disable */
 
-const DarkModeContext = createContext();
+interface DarkModeContextProps {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+}
+
+const DarkModeContext = createContext<DarkModeContextProps | undefined>(
+  undefined
+);
 
 function DarkModeProvider({ children }: { children: ReactNode }) {
   const [isDarkMode, setIsDarkMode] = useLocalStorageState(

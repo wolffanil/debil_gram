@@ -1,11 +1,27 @@
 import { useForm } from "react-hook-form";
 import { Form } from "../../components/ui/FormStyles";
+import * as z from "zod";
 import { Link } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SignupValidation } from "../../libs/validation";
 
 function Register() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<z.infer<typeof SignupValidation>>({
+    resolver: zodResolver(SignupValidation),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
+  });
 
-  const onRegister = () => {};
+  const onRegister = (value: z.infer<typeof SignupValidation>) => {
+    console.log(value);
+  };
 
   return (
     <Form onSubmit={handleSubmit(onRegister)}>
@@ -21,11 +37,17 @@ function Register() {
       <div className="form__wrapper">
         <label className="form__label">Имя</label>
         <input type="text" {...register("name")} className="form__input" />
+        {errors.name && errors.name.message && (
+          <p className="form__error">{errors.name.message}</p>
+        )}
       </div>
 
       <div className="form__wrapper">
         <label className="form__label">E-mail</label>
         <input type="email" {...register("email")} className="form__input" />
+        {errors.email && errors.email.message && (
+          <p className="form__error">{errors.email.message}</p>
+        )}
       </div>
 
       <div className="form__wrapper">
@@ -35,6 +57,9 @@ function Register() {
           {...register("password")}
           className="form__input"
         />
+        {errors.password && errors.password.message && (
+          <p className="form__error">{errors.password.message}</p>
+        )}
       </div>
 
       <button className="form__button" type="submit">
